@@ -1,4 +1,12 @@
 The class creates fully resolved addresses
+### resolve_address
+This is the main method <br>
+```php
+resolve_address($link, $page_base) 
+```
+$link the link found in the page <br>
+$page_base the page base from which you found the above link <br>
+
 ### example:
 if i have a page with the follwing links
 
