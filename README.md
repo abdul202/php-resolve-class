@@ -1,4 +1,4 @@
-The class that creates fully resolved addresses
+The class creates fully resolved addresses
 ### example:
 if i have a page with the follwing links
 
