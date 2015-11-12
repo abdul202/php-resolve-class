@@ -43,5 +43,45 @@ https://raw.githubusercontent.com/abdul202/php-resolve-class/master/linked_page.
 https://raw.githubusercontent.com/abdul202/php-resolve-class/linked_page.html
 https://raw.githubusercontent.com/linked_page.html
 ```
-
-
+### check for the base tag
+before you use this class to resolve the links in pages you must check for the base tag in the source code
+```html
+<base href="http://www.satfrequencies.com/vb/" />
+```
+you need to extract this link value to resolve all page links to this base tag
+to do so use the fowllwing function
+in whcih i use my curl class https://github.com/abdul202/php-cURL-class
+```php
+include 'inc/curl.class.php';
+$curl = new Curl();
+/**
+ * Get page base tag value if we found it or false otherwise
+ * @global Curl $curl using https://github.com/abdul202/php-cURL-class
+ * @param type $url the page url to check for the base tag
+ * @return the base tag value or false in not found
+ */
+function get_base_tag ($url) {
+    global  $curl;
+    $curl->getFile($url);
+    $page  = $curl->file;
+    $doc = new DOMDocument;
+    // suppress errors
+    libxml_use_internal_errors(true);
+    $doc->loadHTML($page);
+    $xpath = new DOMXPath($doc);
+    $nodeList = $xpath->query('//base/@href');
+    $lenght = $nodeList->length;
+    if ($lenght) {
+        return $nodeList->item(0)->nodeValue;
+    } else {
+        return FALSE;
+    }  
+}
+$url = 'http://www.satfrequencies.com/vb/showthread.php/-646563.html';
+$paeg_base_tag = get_base_tag ($url);
+if ($paeg_base_tag) {
+    echo $paeg_base_tag;
+} else {
+    echo 'NO page base found';
+}
+```
