@@ -46,7 +46,12 @@ https://raw.githubusercontent.com/linked_page.html
 ### check for the base tag
 before you use this class to resolve the links in pages you must check for the base tag in the source code
 ```html
+<head>
+...
 <base href="http://www.satfrequencies.com/vb/" />
+...
+</head>
+
 ```
 you need to extract this link value to resolve all page links to this base tag <br>
 to do so use the fowllwing function <br>
