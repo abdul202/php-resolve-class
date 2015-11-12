@@ -48,11 +48,11 @@ before you use this class to resolve the links in pages you must check for the b
 ```html
 <base href="http://www.satfrequencies.com/vb/" />
 ```
-you need to extract this link value to resolve all page links to this base tag
-to do so use the fowllwing function
-in whcih i use my curl class https://github.com/abdul202/php-cURL-class
+you need to extract this link value to resolve all page links to this base tag <br>
+to do so use the fowllwing function <br>
+in whcih i use my curl class https://github.com/abdul202/php-cURL-class <br>
 ```php
-include 'inc/curl.class.php';
+include 'curl.class.php';
 $curl = new Curl();
 /**
  * Get page base tag value if we found it or false otherwise
